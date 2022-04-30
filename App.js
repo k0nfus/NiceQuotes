@@ -15,6 +15,7 @@ _addQuote = (text, author) => {
   let { quotes } = this.state;
   if(text && author) {
   quotes.push({ text, author });
+  // speichern: lokal
   }
   this.setState({ showNewQuoteScreen: false, quotes });
 }
