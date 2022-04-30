@@ -16,6 +16,7 @@ const data = [
 export default class App extends Component {
   state = { index: 0, showNewQuoteScreen: false };
 
+  // Pfeilfunktion wg. this.
 _addQuote = () => {
   this.setState({ showNewQuoteScreen: false });
 }
