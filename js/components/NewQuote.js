@@ -1,0 +1,12 @@
+import React, { Component } from "react";
+import { Button, TextInput } from 'react-native';
+
+export default class NewQuote extends Component {
+    render() {
+        if(this.props.visible === false) {
+            return null;
+        }
+        // this.props.onSave
+        return <Button title="Speichern" onPress={this.props.onSave} />;
+    }
+}
