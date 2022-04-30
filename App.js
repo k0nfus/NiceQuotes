@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, StyleSheet, SafeAreaView, View, Platform } from 'react-native';
 import Quote from './js/components/Quote'
 import NewQuote from './js/components/NewQuote';
+import AsyncStorageLib from '@react-native-async-storage/async-storage';
 
 const data = [
 {text: 'Probleme kann man niemals mit derselben Denkweise lösen, durch die sie entstanden sind.', author: 'Albert Einstein'},
@@ -10,12 +11,25 @@ const data = [
 export default class App extends Component {
   state = { index: 0, showNewQuoteScreen: false, quotes: data };
 
-  // Pfeilfunktion wg. this.
+_retrieveData() {
+  AsyncStorageLib.getItem('QUOTES').then((value) => {
+    if (value !== null) {
+    value = JSON.parse(value);
+    this.setState({quotes: value});
+  }
+});
+}
+
+_storeData(quotes) {
+  AsyncStorageLib.setItem('QUOTES', JSON.stringify(quotes));
+}
+
+
 _addQuote = (text, author) => {
   let { quotes } = this.state;
   if(text && author) {
   quotes.push({ text, author });
-  // speichern: lokal
+this._storeData(quotes);
   }
   this.setState({ showNewQuoteScreen: false, quotes });
 }
