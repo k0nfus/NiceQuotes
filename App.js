@@ -1,19 +1,26 @@
-// import-Anweisungen
-import React, { Component } from 'react'; // React Native basiert auf React
+import React, { Component } from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
-import { textDecorationColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
-// APIs und Komponenten
-// eigene Komponenten
 
-// Deklaration einer Kompenente (hier als Klasse) 
+const data = [
+{text: 'Hallo Welt', author: '-- Ein junger Programmierer'},
+{text: 'Der Mensch ist das Problem.', author: '-- Jan Jürgens'},
+{text: 'Probleme kann man niemals mit derselben Denkweise lösen, durch die sie entstanden sind.', author: '-- Albert Einstein'},
+];
+
 export default class App extends Component {
-  // Darstellung im UI
+
   render() {
+    const quote = data[2];
+
     return (
-      // JSX
+
       <View style={styles.container}>
-        <Text>Probleme kann man niemals mit derselben Denkweise lösen, durch die sie entstanden sind.</Text>
-        <Text>-- Albert Einstein</Text>
+        <Text>
+          {quote.text}
+        </Text>
+        <Text>
+          {quote.author}
+        </Text>
         <Button title="Nächstes Zitat" onPress={() => alert('Es klappt!')}/>
       </View>
     );
