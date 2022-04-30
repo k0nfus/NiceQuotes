@@ -4,27 +4,25 @@ import Quote from './js/components/Quote'
 import NewQuote from './js/components/NewQuote';
 
 const data = [
-{text: 'Hallo Welt', author: 'Peter Pan'},
-{text: 'Der Mensch ist das Problem.', author: 'Jan Jürgens'},
 {text: 'Probleme kann man niemals mit derselben Denkweise lösen, durch die sie entstanden sind.', author: 'Albert Einstein'},
-{text: 'Zitat 1', author: 'Autor'},
-{text: 'Zitat 2', author: 'Autor'},
-{text: 'Zitat 3', author: 'Autor'},
-{text: 'Zitat 4', author: 'Autor'},
 ];
 
 export default class App extends Component {
-  state = { index: 0, showNewQuoteScreen: false };
+  state = { index: 0, showNewQuoteScreen: false, quotes: data };
 
   // Pfeilfunktion wg. this.
-_addQuote = () => {
-  this.setState({ showNewQuoteScreen: false });
+_addQuote = (text, author) => {
+  let { quotes } = this.state;
+  if(text && author) {
+  quotes.push({ text, author });
+  }
+  this.setState({ showNewQuoteScreen: false, quotes });
 }
   render() {
-    let index = this.state.index;
-    const quote = data[index];
+    let { index, quotes } = this.state;
+    const quote = quotes[index];
     let nextIndex = index + 1;
-    if(nextIndex === data.length) nextIndex = 0;
+    if(nextIndex === quotes.length) nextIndex = 0;
     let prevIndex = index -1;
     if(prevIndex === -1) prevIndex = data.length - 1;
     return (
