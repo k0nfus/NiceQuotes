@@ -6,10 +6,12 @@ export default class NewQuote extends Component {
     state={ content: null, author: null };
 
     render() {
+        const {visible, onSave} = this.props;
+        const { content, author } = this.state;
         // this.props.onSave
         return (
-        <Modal visible={this.props.visible}
-        onRequestClose={this.props.onSave}
+        <Modal visible={visible}
+        onRequestClose={onSave}
         animationType="slide"
         >
             <View style={styles.container}>
@@ -25,7 +27,11 @@ export default class NewQuote extends Component {
              underlineColorAndroid="transparent"
              onChangeText={text => this.setState({ author: text })}
              />
-            <Button title="Speichern" onPress={this.props.onSave} />
+            <Button
+            title="Speichern"
+            onPress={() =>
+                onSave(content, author)
+            } />
             </View>
         </Modal>
         )
