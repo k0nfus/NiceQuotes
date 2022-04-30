@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Button, Modal, StyleSheet, TextInput, View } from 'react-native';
 
 export default class NewQuote extends Component {
-    
+
     state={ content: null, author: null };
 
     render() {
@@ -11,17 +11,20 @@ export default class NewQuote extends Component {
         // this.props.onSave
         return (
         <Modal visible={visible}
-        onRequestClose={onSave}
+        onRequestClose={() =>{
+          this.setState({ content: null, author: null })
+          onSave(null, null)          
+        }}
         animationType="slide"
         >
             <View style={styles.container}>
-             <TextInput style={[styles.input, { height: 150 }]} 
-            multiline={true} 
-            placeholder="Inhalt des Zitats" 
-            underlineColorAndroid="transparent" 
+             <TextInput style={[styles.input, { height: 150 }]}
+            multiline={true}
+            placeholder="Inhalt des Zitats"
+            underlineColorAndroid="transparent"
             onChangeText={text => this.setState({ content: text })}
-             />   
-           
+             />
+
              <TextInput style={styles.input}
              placeholder="Autor:in des Zitats"
              underlineColorAndroid="transparent"
@@ -29,9 +32,10 @@ export default class NewQuote extends Component {
              />
             <Button
             title="Speichern"
-            onPress={() =>
+            onPress={() => {
+                this.setState({ content: null, author: null })
                 onSave(content, author)
-            } />
+            }} />
             </View>
         </Modal>
         )
