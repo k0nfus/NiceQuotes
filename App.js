@@ -1,6 +1,7 @@
 // import-Anweisungen
 import React, { Component } from 'react'; // React Native basiert auf React
-import { StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View } from 'react-native';
+import { textDecorationColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 // APIs und Komponenten
 // eigene Komponenten
 
@@ -11,7 +12,9 @@ export default class App extends Component {
     return (
       // JSX
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
+        <Text>Probleme kann man niemals mit derselben Denkweise lösen, durch die sie entstanden sind.</Text>
+        <Text>-- Albert Einstein</Text>
+        <Button title="Nächstes Zitat" onPress={() => alert('Es klappt!')}/>
       </View>
     );
   }
