@@ -26,8 +26,12 @@ export default class App extends Component {
 
       <View style={styles.container}>
         <Quote text={quote.text} author={quote.author}/>
-        <Button title="Nächstes Zitat" onPress={() => this.setState({ index: nextIndex })}/>
-        <Button title="Voriges Zitat" onPress={() => this.setState({ index: prevIndex })}/>
+        <View style={{position: 'absolute', bottom: 0, right: 0}}>
+          <Button title="Nächstes Zitat" onPress={() => this.setState({ index: nextIndex })}/>
+        </View>
+        <View style={{position: 'absolute', bottom: 0, left: 0}}>
+          <Button title="Voriges Zitat" onPress={() => this.setState({ index: prevIndex })}/>
+        </View>
       </View>
     );
   }
