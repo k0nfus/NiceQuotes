@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Button, StyleSheet, View } from 'react-native';
-
 import Quote from './js/components/Quote'
 
 const data = [
@@ -33,7 +32,6 @@ export default class App extends Component {
     );
   }
 }
-
 
 const styles = StyleSheet.create({
   container: {
