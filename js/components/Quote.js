@@ -18,9 +18,21 @@ export default class Quote extends Component {
         // const author = this.props.author;
         return(
             <Fragment>
-            <Text style={{fontSize: 36, fontStyle: 'italic'}}>{text}</Text>
-            <Text style={{fontSize: 20}}>&mdash; {author}</Text>
+            <Text style={styles.text}>{text}</Text>
+            <Text style={styles.author}>&mdash; {author}</Text>
             </Fragment>
         );
     }
 }
+
+const styles = {
+    text: {
+        fontSize: 36,
+        fontStyle: 'italic',
+        color: 'white'
+    },
+    author: {
+        fontSize: 20,
+        color: 'white'
+    }
+};
