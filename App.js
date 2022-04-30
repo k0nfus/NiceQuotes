@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, StyleSheet, View, Platform } from 'react-native';
+import { Button, StyleSheet, SafeAreaView, View, Platform } from 'react-native';
 import Quote from './js/components/Quote'
 import NewQuote from './js/components/NewQuote';
 
@@ -27,7 +27,7 @@ _addQuote = (text, author) => {
     if(prevIndex === -1) prevIndex = data.length - 1;
     return (
 
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <View style={styles.buttonnew}>
           <Button title="Neues Zitat" onPress={() => this.setState({showNewQuoteScreen: true})}/>
         </View>
@@ -40,7 +40,7 @@ _addQuote = (text, author) => {
         <View style={styles.buttonprev}>
           <Button title="<<" onPress={() => this.setState({ index: prevIndex })}/>
         </View>
-      </View>
+      </SafeAreaView>
     );
   }
 }
