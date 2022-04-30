@@ -28,17 +28,20 @@ export default class Quote extends Component {
 const styles = StyleSheet.create( {
     container: {
         margin: 20,
-        padding: 20
+        padding: 50,
+        backgroundColor: 'white',
+        elevation: 20,
+        borderRadius: 15,
     },
     text: {
         fontSize: 20,
         fontStyle: 'italic',
-        color: 'white',
+        color: 'black',
         textAlign: 'center',
     },
     author: {
         fontSize: 15,
-        color: 'white',
+        color: 'black',
         textAlign: 'right'
     }
 });

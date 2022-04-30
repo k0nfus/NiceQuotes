@@ -26,10 +26,10 @@ export default class App extends Component {
 
       <View style={styles.container}>
         <Quote text={quote.text} author={quote.author}/>
-        <View style={{position: 'absolute', bottom: 0, right: 0}}>
+        <View style={styles.buttonnext}>
           <Button title="Nächstes Zitat" onPress={() => this.setState({ index: nextIndex })}/>
         </View>
-        <View style={{position: 'absolute', bottom: 0, left: 0}}>
+        <View style={styles.buttonprev}>
           <Button title="Voriges Zitat" onPress={() => this.setState({ index: prevIndex })}/>
         </View>
       </View>
@@ -40,9 +40,19 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
+    backgroundColor: 'lightgray',
     
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  buttonnext: {
+    position: 'absolute',
+    bottom: 0,
+    right: 0
+  },
+  buttonprev: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0
   },
 });
