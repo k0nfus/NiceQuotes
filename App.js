@@ -33,6 +33,18 @@ this._storeData(quotes);
   }
   this.setState({ showNewQuoteScreen: false, quotes });
 }
+
+_deleteButton() {
+let { index, quotes } = this.state;
+quotes.splice(index, 1);
+this._storeData(quotes);
+this.setState({index: 0, quotes });
+}
+
+componentDidMount() {
+  this._retrieveData();
+}
+
   render() {
     let { index, quotes } = this.state;
     const quote = quotes[index];
@@ -40,6 +52,7 @@ this._storeData(quotes);
     if(nextIndex === quotes.length) nextIndex = 0;
     let prevIndex = index -1;
     if(prevIndex === -1) prevIndex = data.length - 1;
+    
     return (
 
       <SafeAreaView style={styles.container}>
@@ -54,6 +67,9 @@ this._storeData(quotes);
         </View>
         <View style={styles.buttonprev}>
           <Button title="<<" onPress={() => this.setState({ index: prevIndex })}/>
+        </View>
+        <View style={styles.buttondel}>
+          <Button title="löschen" onPress={() => this._deleteButton()}/>
         </View>
       </SafeAreaView>
     );
@@ -76,11 +92,16 @@ const styles = StyleSheet.create({
   buttonprev: {
     position: 'absolute',
     bottom: Platform.OS === 'ios' ? 20 : 0,
-    left: 0
+    left: 0,
   },
   buttonnew: {
     position: 'absolute',
-    top: 39,
+    top: 50,
     right: 0,
   },
+  buttondel: {
+    position: 'absolute',
+    top: 50,
+    left: 0,
+  }
 });
