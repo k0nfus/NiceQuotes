@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, StyleSheet, SafeAreaView, View, Platform } from 'react-native';
+import { Alert, Button, StyleSheet, SafeAreaView, View, Platform } from 'react-native';
 import Quote from './js/components/Quote'
 import NewQuote from './js/components/NewQuote';
 import AsyncStorageLib from '@react-native-async-storage/async-storage';
@@ -35,6 +35,13 @@ this._storeData(quotes);
 }
 
 _deleteButton() {
+Alert.alert('Zitat löschen?', 'Dies kann nicht rückgängig gemacht werden.',[
+  {text: 'Abbrechen'},
+  {text: 'Löschen', onPress: () => this._deleteQuote()}
+]);
+}
+
+_deleteQuote() {
 let { index, quotes } = this.state;
 quotes.splice(index, 1);
 this._storeData(quotes);
