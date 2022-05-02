@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert, Button, StyleSheet, SafeAreaView, View, Platform } from 'react-native';
+import { Alert, Button, StyleSheet, SafeAreaView, Text, View, Platform } from 'react-native';
 import Quote from './js/components/Quote'
 import NewQuote from './js/components/NewQuote';
 import AsyncStorageLib from '@react-native-async-storage/async-storage';
@@ -68,7 +68,12 @@ componentDidMount() {
         </View>
         <NewQuote visible={this.state.showNewQuoteScreen}
         onSave={this._addQuote}/>
+        
+          {quote === undefined ? (
+            <Text>Keine Zitate</Text>
+          ) : (
         <Quote text={quote.text} author={quote.author}/>
+          )}
         <View style={styles.buttonnext}>
           <Button title=">>" onPress={() => this.setState({ index: nextIndex })}/>
         </View>
