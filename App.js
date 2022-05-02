@@ -70,7 +70,7 @@ componentDidMount() {
         onSave={this._addQuote}/>
         
           {quote === undefined ? (
-            <Text>Keine Zitate</Text>
+            <Text style={{ fontSize: 30}}>Keine Zitate</Text>
           ) : (
         <Quote text={quote.text} author={quote.author}/>
           )}
